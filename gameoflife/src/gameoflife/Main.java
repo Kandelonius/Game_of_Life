@@ -13,8 +13,6 @@ public class Main {
         char[][] grid = new char[N][N];
         createGrid(N,
             S, grid);
-//        printGrid(grid);
-
     }
 
     public static void createGrid(
@@ -28,9 +26,6 @@ public class Main {
         char unit = 'a';
         //          loop to fill the array
         for (int i = 0; i < N; i++) {
-            check = rng.nextBoolean();
-            unit = getChar(check);
-            grid[i][i] = unit;
             for (int j = 0; j < N; j++) {
                 check = rng.nextBoolean();
                 unit = getChar(check);
@@ -40,7 +35,7 @@ public class Main {
             System.out.println();
         }
     }
-
+    
     public static char getChar(boolean b) {
         if (b) {
             return 'O';
@@ -48,8 +43,4 @@ public class Main {
             return ' ';
         }
     }
-
-//    public static void printGrid(char[][] grid) {
-//        for (int i = )
-//    }
 }
