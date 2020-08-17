@@ -35,7 +35,7 @@ public class Main {
             System.out.println();
         }
     }
-    
+
     public static char getChar(boolean b) {
         if (b) {
             return 'O';
