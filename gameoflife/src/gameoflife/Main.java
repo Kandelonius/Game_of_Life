@@ -7,40 +7,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
         // Output a random square or NxN
-        int N = stdIn.nextInt(); // grid dimensions
+        int N = stdIn.nextInt(); // genOne dimensions
         int S = stdIn.nextInt(); // seed for RNG
         // declare the multidimensional array
-        char[][] grid = new char[N][N];
-        createGrid(N,
-            S, grid);
-    }
-
-    public static void createGrid(
-        int N,
-        int S,
-        char[][] grid) {
-        // declare and seed rng
-        Random rng = new Random(S);
-        // string to load in the characters
-        boolean check = true;
-        char unit = 'a';
-        //          loop to fill the array
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                check = rng.nextBoolean();
-                unit = getChar(check);
-                grid[i][j] = unit;
-                System.out.print(grid[i][j]);
-            }
-            System.out.println();
-        }
-    }
-
-    public static char getChar(boolean b) {
-        if (b) {
-            return 'O';
-        } else {
-            return ' ';
-        }
+        char[][] genOne = new char[N][N];
+        char[][] genTwo = new char[N][N];
+        Universe.createGrid(N,
+            S, genOne);
     }
 }
