@@ -17,5 +17,9 @@ public class Main {
         universe.setliving(0,3);
         universe.printUniverse();
         System.out.println(universe.sumOfNeighbors(1, 2));
+        universe.nextGen();
+        universe.printUniverse();
+        universe.nextGen();
+        universe.printUniverse();
     }
 }
