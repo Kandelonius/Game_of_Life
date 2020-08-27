@@ -1,6 +1,5 @@
 package gameoflife;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -10,9 +9,13 @@ public class Main {
         int N = stdIn.nextInt(); // genOne dimensions
         int S = stdIn.nextInt(); // seed for RNG
         // declare the multidimensional array
-        char[][] genOne = new char[N][N];
-        char[][] genTwo = new char[N][N];
-        Universe.createGrid(N,
-            S, genOne);
+        //        char[][] genA = new char[N][N];
+        //        char[][] genB = new char[N][N];
+        Universe universe = new Universe(N, S);
+        universe.setliving(1,1);
+        universe.setliving(1,2);
+        universe.setliving(1,3);
+        universe.printUniverse();
+
     }
 }
