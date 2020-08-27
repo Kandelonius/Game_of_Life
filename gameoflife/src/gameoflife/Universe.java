@@ -13,8 +13,8 @@ public class Universe {
 
     // constructor for dimensions and matrix
     public Universe(
-        int d,
-        int s) {
+            int d,
+            int s) {
         dimensions = d;
         S = s;
         this.state = new int[dimensions][dimensions];
@@ -69,15 +69,16 @@ public class Universe {
     }
 
     public int sumOfNeighbors(
-        int row,
-        int column,
-        int dimensions) {
+            int row,
+            int column) {
+//            int dimensions,
+//            int[][] matrix
+
         int count = 0;
         int left = column - 1;
-        int top = row + 1;
+        int top = row - 1;
         int right = column + 1;
         int bot = row + 1;
-
         // if we are at the top of the field, top will be the bottom
         if (row == 0) {
             top = dimensions - 1;
@@ -94,20 +95,29 @@ public class Universe {
         if (column == dimensions - 1) {
             right = 0;
         }
+        count += this.state[top][left];
+        count += this.state[top][column];
+        count += this.state[top][right];
 
+        count += this.state[row][left];
+        count += this.state[row][right];
+
+        count += this.state[bot][left];
+        count += this.state[bot][column];
+        count += this.state[bot][right];
         return count;
     }
 
-    // set living and dead states for testing
+    // set living and dead states for testing and initial conditions
     public void setliving(
-        int row,
-        int column) {
+            int row,
+            int column) {
         this.state[row][column] = 1;
     }
 
     public void setDead(
-        int row,
-        int column) {
+            int row,
+            int column) {
         this.state[row][column] = 0;
     }
 

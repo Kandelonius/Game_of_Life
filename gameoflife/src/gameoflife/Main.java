@@ -12,10 +12,10 @@ public class Main {
         //        char[][] genA = new char[N][N];
         //        char[][] genB = new char[N][N];
         Universe universe = new Universe(N, S);
-        universe.setliving(1,1);
-        universe.setliving(1,2);
-        universe.setliving(1,3);
+        universe.setliving(0,1);
+        universe.setliving(0,2);
+        universe.setliving(0,3);
         universe.printUniverse();
-
+        System.out.println(universe.sumOfNeighbors(1, 2));
     }
 }
