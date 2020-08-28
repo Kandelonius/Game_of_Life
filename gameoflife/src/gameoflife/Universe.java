@@ -6,15 +6,15 @@ public class Universe {
     // using only square fields so only using one dimension
     int dimensions;
 
-    int S;
+    long S;
 
     //use int matrix for ease of state detection. boolean would also work
     int[][] state;
 
     // constructor for dimensions and matrix
     public Universe(
-            int d,
-            int s) {
+        int d,
+        long s) {
         dimensions = d;
         S = s;
         this.state = new int[dimensions][dimensions];
@@ -49,29 +49,26 @@ public class Universe {
 
     public void printUniverse() {
         for (int i = 0; i < dimensions; i++) {
-            String row = "|";
+            String row = "";
             for (int j = 0; j < dimensions; j++) {
-                if (this.state[i][j] == 0) {
-                    //                    System.out.print(0);
-                    //                    check = rng.nextBoolean();
-                    //                    row += getChar(check);
-                    row += "+";
+                check = rng.nextBoolean();
+                if (check) {
+                    this.state[i][j] = 1;
+                    row += "O";
                 } else {
-                    //                    System.out.print(1);
-                    //                    check = rng.nextBoolean();
-                    //                    row += getChar(check);
-                    row += "Y";
+                    this.state[i][j] = 0;
+                    row += " ";
                 }
             }
-            row += "|";
             System.out.println(row);
         }
         System.out.println();
     }
+
     // gets the count of neighbors, used to check if a cell in the next generation is alive or not
     public int sumOfNeighbors(
-            int row,
-            int column) {
+        int row,
+        int column) {
         int count = 0;
         int left = column - 1;
         int top = row - 1;
@@ -116,29 +113,29 @@ public class Universe {
         int[][] newGen = new int[dimensions][dimensions];
         for (int i = 0; i < dimensions; i++) {
             for (int j = 0; j < dimensions; j++) {
-                int count = sumOfNeighbors(i, j);
+                int count = sumOfNeighbors(i,
+                    j);
                 if (count == 3) {
                     newGen[i][j] = 1;
-                }else if (count == 2 && this.state[i][j] == 1) {
+                } else if (count == 2 && this.state[i][j] == 1) {
                     newGen[i][j] = 1;
-                }else {
+                } else {
                     newGen[i][j] = 0;
                 }
             }
         }
         this.state = newGen;
     }
-
     // set living and dead states for testing and initial conditions
-    public void setliving(
-            int row,
-            int column) {
+    public void setLiving(
+        int row,
+        int column) {
         this.state[row][column] = 1;
     }
 
     public void setDead(
-            int row,
-            int column) {
+        int row,
+        int column) {
         this.state[row][column] = 0;
     }
 
@@ -153,11 +150,4 @@ public class Universe {
     //            System.out.println();
     //        }
     //    }
-    public static String getChar(boolean b) {
-        if (b) {
-            return "+";
-        } else {
-            return "Y";
-        }
-    }
 }

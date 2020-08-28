@@ -7,19 +7,23 @@ public class Main {
         Scanner stdIn = new Scanner(System.in);
         // Output a random square or NxN
         int N = stdIn.nextInt(); // genOne dimensions
-        int S = stdIn.nextInt(); // seed for RNG
+        long S = stdIn.nextLong(); // seed for RNG
+        int generations = stdIn.nextInt(); // number of generations
         // declare the multidimensional array
         //        char[][] genA = new char[N][N];
         //        char[][] genB = new char[N][N];
         Universe universe = new Universe(N, S);
-        universe.setliving(0,1);
-        universe.setliving(0,2);
-        universe.setliving(0,3);
+//        universe.setLiving(0,1);
+//        universe.setLiving(0,2);
+//        universe.setLiving(0,3);
+        for (int i = 0; i < generations; i++) {
+//            universe.printUniverse();
+            universe.nextGen();
+        }
         universe.printUniverse();
-        System.out.println(universe.sumOfNeighbors(1, 2));
-        universe.nextGen();
-        universe.printUniverse();
-        universe.nextGen();
-        universe.printUniverse();
+        //        System.out.println(universe.sumOfNeighbors(1, 2));
+//        universe.nextGen();
+//
+//        universe.printUniverse();
     }
 }
