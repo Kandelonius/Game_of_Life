@@ -25,38 +25,26 @@ public class Universe {
 
     boolean check = true;
 
-    char unit = 'a';
-
-    //          loop to fill the array
-    //    for (int i = 0; i < dimensions; i++) {
-    //        for (int j = 0; j < dimensions; j++) {
-    //            check = rng.nextBoolean();
-    //            unit = getChar(check);
-    //            genA[i][j] = unit;
-    //            System.out.print(genA[i][j]);
-    //        }
-    //        System.out.println();
-    //    }
-    //    public static void createGrid(
-    //        int dimensions,
-    //        int S,
-    //        char[][] genA) {
-    // declare and seed rng
-    //        Random rng = new Random(S);
-    // string to load in the characters
-    //        boolean check = true;
-    //        char unit = 'a';
+    public void createGrid() {
+        for (int i = 0; i < dimensions; i++) {
+            for (int j = 0; j < dimensions; j++) {
+                check = rng.nextBoolean();
+                if (check) {
+                    this.state[i][j] = 1;
+                } else {
+                    this.state[i][j] = 0;
+                }
+            }
+        }
+    }
 
     public void printUniverse() {
         for (int i = 0; i < dimensions; i++) {
             String row = "";
             for (int j = 0; j < dimensions; j++) {
-                check = rng.nextBoolean();
-                if (check) {
-                    this.state[i][j] = 1;
+                if (state[i][j] == 1) {
                     row += "O";
                 } else {
-                    this.state[i][j] = 0;
                     row += " ";
                 }
             }
@@ -138,16 +126,4 @@ public class Universe {
         int column) {
         this.state[row][column] = 0;
     }
-
-    //          loop to fill the array
-    //        for (int i = 0; i < N; i++) {
-    //            for (int j = 0; j < N; j++) {
-    //                check = rng.nextBoolean();
-    //                unit = getChar(check);
-    //                genA[i][j] = unit;
-    //                System.out.print(genA[i][j]);
-    //            }
-    //            System.out.println();
-    //        }
-    //    }
 }
