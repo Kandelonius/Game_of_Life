@@ -3,25 +3,26 @@ package gameoflife;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Intelilife {public static void main(String[] args) {
-    Scanner stdIn = new Scanner(System.in);
-    // Output a random square or NxN
-    int N = stdIn.nextInt(); // genOne dimensions
-    long S = stdIn.nextLong(); // seed for RNG
-    int generations = stdIn.nextInt(); // number of generations
-    // declare the multidimensional array
-    char[][] gridA = new char[N][N];
-    char[][] gridB = new char[N][N];
-    createGrid(N,
-        S, gridA);
-    //        printGrid(grid);
+public class Intelilife {
+    public static void main(String[] args) {
+        Scanner stdIn = new Scanner(System.in);
+        // Output a random square or NxN
+        int N = stdIn.nextInt(); // genOne dimensions
+        long S = stdIn.nextLong(); // seed for RNG
+        int generations = stdIn.nextInt(); // number of generations
+        // declare the multidimensional array
+        char[][] gridA = new char[N][N];
+        char[][] gridB = new char[N][N];
+        createGrid(N,
+                S, gridA);
+        //        printGrid(grid);
+    }
 
-}
 
     public static void createGrid(
-        int N,
-        long S,
-        char[][] grid) {
+            int N,
+            long S,
+            char[][] grid) {
         // declare and seed rng
         Random rng = new Random(S);
 
@@ -43,27 +44,27 @@ public class Intelilife {public static void main(String[] args) {
         }
     }
 
-    public void nextGen(int N) {
+    public void nextGen(int N, int[][] grid) {
         int[][] newGen = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 int count = sumOfNeighbors(i,
-                    j);
+                        j);
                 if (count == 3) {
-                    gridB[i][j] = 1;
-                } else if (count == 2 && this.state[i][j] == 1) {
+                    newGen[i][j] = 1;
+                } else if (count == 2 && grid[i][j] == 1) {
                     newGen[i][j] = 1;
                 } else {
                     newGen[i][j] = 0;
                 }
             }
         }
-        gridA = newGen;
+        grid = newGen;
     }
 
     public int sumOfNeighbors(
-        int row,
-        int column) {
+            int row,
+            int column) {
         int count = 0;
         int left = column - 1;
         int top = row - 1;
